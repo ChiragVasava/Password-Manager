@@ -15,6 +15,9 @@ const Navbar = () => {
                     <li className="mr-4"><a href="/profile" className="hover:text-green-500 transition-colors hover:font-bold inline-block px-1">Profile</a></li>
                     <li className="mr-4"><a href="/settings" className="hover:text-green-500 transition-colors hover:font-bold inline-block px-1">Settings</a></li>
                 </ul>
+                <button className="text-white">
+                    <img className="invert p-5 w-16" src="/icons/github.svg" alt="github logo" />
+                </button>
             </div>
         </nav>
     )
