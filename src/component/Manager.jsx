@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRef, useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Manager = () => {
     const ref = useRef();
@@ -16,10 +17,18 @@ const Manager = () => {
     }, [])
 
     const copyText = (text) => {
-        alert("Copied to clipboard:" + text);
+        toast('Coppied To Clipboar', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
         navigator.clipboard.writeText(text)
     }
-
 
     const showPassword = () => {
         passwordRef.current.type = "text"
@@ -48,6 +57,22 @@ const Manager = () => {
 
     return (
         <>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition="Bounce"
+            />
+
+
             <div className="absolute inset-0 -z-10 h-full w-full bg-green [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#22c55e_100%)]"></div>
 
             <div className="mycontainer">
@@ -114,7 +139,7 @@ const Manager = () => {
                                         <td className="flex items-center justify-center py-2 border border-white text-center">
                                             <div className="flex items-center justify-center">
                                                 <a href={item.site} target='_blank'>{item.site}</a>
-                                                <div className="lordiconcopy size-7 cursor-pointer" onClick={() => {copyText(item.site)}}>
+                                                <div className="lordiconcopy size-7 cursor-pointer" onClick={() => { copyText(item.site) }}>
                                                     <lord-icon
                                                         style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
                                                         src="https://cdn.lordicon.com/iykgtsbt.json"
@@ -129,7 +154,7 @@ const Manager = () => {
                                                 <span>
                                                     {item.username}
                                                 </span>
-                                                <div className="lordiconcopy size-7 cursor-pointer" onClick={() => {copyText(item.username)}}>
+                                                <div className="lordiconcopy size-7 cursor-pointer" onClick={() => { copyText(item.username) }}>
                                                     <lord-icon
                                                         style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
                                                         src="https://cdn.lordicon.com/iykgtsbt.json"
@@ -145,7 +170,7 @@ const Manager = () => {
                                                 <span>
                                                     {item.password}
                                                 </span>
-                                                <div className="lordiconcopy size-7 cursor-pointer" onClick={() => {copyText(item.password)}}>
+                                                <div className="lordiconcopy size-7 cursor-pointer" onClick={() => { copyText(item.password) }}>
                                                     <lord-icon
                                                         style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
                                                         src="https://cdn.lordicon.com/iykgtsbt.json"
