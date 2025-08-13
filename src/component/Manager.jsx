@@ -100,12 +100,53 @@ const Manager = () => {
                                 </tr>
                             </thead>
                             <tbody className="bg-green-100">
-                                {passwordArray.map((item, index)=> {
+                                {passwordArray.map((item, index) => {
                                     return <tr key={index}>
-                                    <td className="py-2 border border-white text-center w-32"><a href={item.site} target='_blank'>{item.site}</a></td>
-                                    <td className="py-2 border border-white text-center w-32">{item.username}</td>
-                                    <td className="py-2 border border-white text-center w-32">{item.password}</td>
-                                </tr>
+
+                                        <td className="flex items-center justify-center py-2 border border-white text-center">
+                                            <div className="flex items-center justify-center">
+                                                <a href={item.site} target='_blank'>{item.site}</a>
+                                                <div className="lordiconcopy size-7 cursor-pointer" onClick={() => {copyText(item.site)}}>
+                                                    <lord-icon
+                                                        style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
+                                                        src="https://cdn.lordicon.com/iykgtsbt.json"
+                                                        trigger="hover" >
+                                                    </lord-icon>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td className="py-2 border border-white text-center">
+                                            <div className="flex items-center justify-center">
+                                                <span>
+                                                    {item.username}
+                                                </span>
+                                                <div className="lordiconcopy size-7 cursor-pointer" onClick={() => {copyText(item.username)}}>
+                                                    <lord-icon
+                                                        style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
+                                                        src="https://cdn.lordicon.com/iykgtsbt.json"
+                                                        trigger="hover" >
+                                                    </lord-icon>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                        <td className="py-2 border border-white text-center">
+                                            <div className="flex items-center justify-center">
+
+                                                <span>
+                                                    {item.password}
+                                                </span>
+                                                <div className="lordiconcopy size-7 cursor-pointer" onClick={() => {copyText(item.password)}}>
+                                                    <lord-icon
+                                                        style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
+                                                        src="https://cdn.lordicon.com/iykgtsbt.json"
+                                                        trigger="hover" >
+                                                    </lord-icon>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 })}
                             </tbody>
                         </table>}
@@ -116,3 +157,4 @@ const Manager = () => {
     )
 }
 export default Manager
+
