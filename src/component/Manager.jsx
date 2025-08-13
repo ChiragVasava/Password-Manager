@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 
 const Manager = () => {
     const ref = useRef();
+    const passwordRef = useRef();
     const [form, setform] = useState({ site: "", username: "", password: "" })
     const [passwordArray, setPasswordArray] = useState([])
 
@@ -14,16 +15,23 @@ const Manager = () => {
         }
     }, [])
 
+    const copyText = (text) => {
+        alert("Copied to clipboard:" + text);
+        navigator.clipboard.writeText(text)
+    }
 
 
     const showPassword = () => {
+        passwordRef.current.type = "text"
         alert("Toggle password visibility");
         console.log(ref.current.src);
         if (ref.current.src.includes("icons/eyecross.png")) {
             ref.current.src = "icons/eye.png"
+            passwordRef.current.type = "password"
         }
         else {
             ref.current.src = "icons/eyecross.png"
+            passwordRef.current.type = "text"
         }
     }
 
@@ -58,7 +66,7 @@ const Manager = () => {
                         <input value={form.username} onChange={handleChange} placeholder="Enter Username" className="border border-green-500 w-full rounded-full p-4 py-1" type="username" name="username" id="" />
 
                         <div className="relative">
-                            <input value={form.password} onChange={handleChange}
+                            <input ref={passwordRef} value={form.password} onChange={handleChange}
                                 placeholder="Enter Password"
                                 className="border border-green-500 w-full rounded-full px-4 py-3 pr-12"
                                 type="password"
@@ -157,4 +165,3 @@ const Manager = () => {
     )
 }
 export default Manager
-
